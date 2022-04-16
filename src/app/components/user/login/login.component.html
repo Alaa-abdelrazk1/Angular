@@ -1,0 +1,71 @@
+<head>
+  <title>Login To FireClub</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+</head>
+
+<body>
+  <div class="d-lg-flex half">
+    <div class="bg order-1 order-md-2  img" style="background-image: url('../../../../assets/images/login.jpg');"></div>
+    <div class="contents order-2 order-md-1 ">
+
+      <div class="container">
+        <div class="row align-items-center justify-content-center ">
+          <div class="col-md-7 test  p-5">
+            <div class="hit-the-floor pb-5">
+              <h1>FireClub</h1>
+            </div>
+            <div [formGroup]="formLogin">
+              <div class="form-field d-flex align-items-center mb-3"> <span class="far fa-user"></span> 
+                <input formControlName="Email" type="text" name="userName" id="userName" placeholder="Email"> 
+              </div>
+
+              <div *ngIf="isInValidAndTouched('Email')">
+                <small class="form-text text" *ngIf="isControlHasError('Email','required')">required
+                  email</small>
+                <small class="form-text text" *ngIf="isControlHasError('Email','pattern')">you should add @ and
+                  .com</small>
+
+              </div>
+              <div class="form-field d-flex align-items-center mt-2">
+                <span class="fas fa-key"></span>
+                <input formControlName="Password" type="password" name="password" id="pwd" placeholder="Password">
+              </div> 
+
+              <div *ngIf="isInValidAndTouched('Password')">
+                <small class="form-text text" *ngIf="isControlHasError('Password','required')">required
+                  password</small>
+                <small class="form-text text" *ngIf="isControlHasError('Password','pattern')">At least 8
+                  characters in length
+                  Lowercase letters
+                  Uppercase letters
+                  Numbers
+                  Special characters
+                </small>
+              </div>
+            
+
+            <div class="text-center pt-1 mb-5 pb-1">
+              <button class="btn btn-block btn-primary pl-3 pr-3" type="button" (click)="login()">Login</button>
+
+            </div>
+
+            <div class="d-flex align-items-center justify-content-center pb-4">
+              <p class="mb-0 me-2">Don't have an account?</p>
+              <a [routerLink]="['/register']">
+                <button type="button" class="btn btn-outline-danger">New account</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+
+
+</body>
+

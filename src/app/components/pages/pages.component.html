@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pages</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+  <div class="container ">
+    <div class="row ">
+      <div class="col-lg-12">
+        <div class="panel profile-cover ">
+          <div class="profile-cover__img">
+            <img class="rounded-circle page-photo" src="{{storageURL}}/pages/{{page.profile_image}}">
+            <h3 class="h3 text-muted">{{page.page_name}}</h3>
+          </div>
+          <div class="profile-cover__action " data-overlay="0.3" style="background: url({{storageURL}}/pages/covers/{{page.cover_image}});">
+            <button class="btn btn-rounded button" *ngIf="!islike"(click)="addLike()">
+              <i class="fa fa-plus pe-2"></i>
+              <span>Like</span>
+            </button>
+            <div class="dropdown" *ngIf="islike">
+              <button class="btn btn-rounded button" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+               Liked
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li class="dropdown-item" style="cursor: pointer;" (click)="deleteLike()">unlike</li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="profile-cover__info">
+            <ul class="nav">
+              <li><strong>{{page.pageslike.length}}</strong>Likes</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel" *ngIf="isPageOwner">
+          <div class="panel-heading">
+            <h3 class="panel-title">Activity Feed</h3>
+          </div>
+          <div class="panel-content panel-activity">
+            <div class="row ms-2 me-2">
+              <form class="panel-activity__status" [formGroup]="formPost" (ngSubmit)="create_post()">
+                <textarea name="user_activity" placeholder="Share what you've been up to..."
+                  class="form-control" formControlName="content"></textarea>
+                <div class="actions">
+                  <div class="btn-group">
+                    <button type="button" class="btn-link" title="" data-toggle="tooltip"
+                      data-original-title="Post an Image">
+                      <label for="file-uploadPost" class="custom-file-upload">
+                        <i class="fa fa-image"></i>
+                    </label> 
+                    <input id="file-uploadPost" type="file" name="image" formControlName="image" class="form-control"
+                    (change)="uploadImagePost($event)">
+                    </button>
+                    
+                  </div>
+                  <button type="submit" class="btn btn-sm btn-rounded button ">
+                    Post
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="panel panel-theme rounded shadow">
+          <div class="panel-heading">
+            <div class="pull-left">
+              <h3 class="panel-title">About</h3>
+            </div>
+            <div class="pull-right">
+              <a  class="btn btn-sm btn-muted"><i class="fa fa-facebook"></i></a>
+              <a  class="btn btn-sm btn-muted"><i class="fa fa-twitter"></i></a>
+              <a class="btn btn-sm btn-muted"><i class="fa fa-google-plus"></i></a>
+            </div>
+            
+          </div><!-- /.panel-heading -->
+          <div class="panel-body p-3 rounded">
+           {{page.about}}
+          </div><!-- /.panel-body -->
+        </div><!-- /.panel -->
+        <!-- liked pages -->
+        <div class="col-md-12 grid-margin">
+          <div class="card rounded">
+            <div class="card-body">
+              <h6 class="card-title">Pages suggestions for you</h6>
+              <div class="d-flex justify-content-between mb-2 pb-2 border-bottom "  *ngFor="let listpages of listpages;index as i" >
+                <div class="d-flex align-items-center hover-pointer  ">
+                  <img class="rounded-circle me-3 page-photo" src="{{storageURL}}/pages/{{listpages.profile_image}}">
+                           
+                  <div class="ml-2">
+                    <p><a class="pageslist-names" (click)="goToPage(listpages.id)">{{listpages.page_name}}</a> </p>
+                  </div>
+                </div>
+              </div>
+      
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+      </div>
+
+
+
+        <!-- create post -->
+
+      <div class="col-lg-8 ">
+        <ul class="panel-activity__list " style="list-style: none;">
+          <li *ngFor="let post of page.posts let i = index" class="postdiv">
+            <app-show-post [postOwner]="page.page_name" [postOwnerId]="page.id"
+                     [postContent]="post.content"
+                     [created_at]="post.created_at" [comments_number]="post.comments.length==0? '' : post.comments.length"
+                     [post_id]="post.id" [post_likes_number]="post.post_likes.length"
+                     [profilePic]="page.profile_image" [imageFolder]="'pages'"
+                     [hasPic]="post.hasPic"
+                     [postPic]="post.postPic"
+                     [showDeleteButton]="false"
+                     [showDots]="false"
+                     [nameLink]="'pages'"
+                     
+                     ></app-show-post> 
+                     <app-create-comment [post_id]="post.id"></app-create-comment>
+                    
+                        <a class="link-secondary text-decoration-none" data-bs-toggle="collapse" href="#allposts{{i}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                          Show comments
+                        </a>   
+                      <div class="collapse" id="allposts{{i}}">
+                        <div *ngFor='let comment of post.comments ;let j = index'>
+                            <app-show-comment [commentOwner]="comment.user.name" [commentContent]="comment.content"
+                             [comment_created_at]="comment.created_at" [commentOwnerPic]="comment.user.profilePic"
+                             [commentOwnerId]="comment.user.id"></app-show-comment>
+                            </div>
+                      </div>
+          </li>
+        </ul> 
+
+      </div>
+
+    </div>
+    <!-- right wrapper end -->
+
+  </div>
+</body>
+
+</html>

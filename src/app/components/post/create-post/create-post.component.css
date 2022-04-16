@@ -1,0 +1,87 @@
+
+.shadow-textarea textarea.form-control::placeholder {
+    font-weight: 150;
+}
+.shadow-textarea textarea.form-control {
+    padding-left: 0.8rem;
+    width: 143%;
+}
+.button{
+    margin-top: 5px;
+    background: #6d0606;
+    margin-left: 36px;
+
+}
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    /* border: 1px solid #ccc; */
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.people-list {
+    -moz-transition: .5s;
+    -o-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s;
+    
+}
+.people-list ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.people-list .chat-list li {
+    padding: 10px 15px;
+    list-style: none;
+    border-radius: 3px;
+}
+
+.people-list .chat-list li:hover {
+    background: #c8c4c4;
+    cursor: pointer
+}
+
+.people-list .chat-list li.active {
+    background: #efefef
+}
+
+.people-list .chat-list li .name {
+    font-size: 15px;
+
+}
+
+
+img{
+    height: 77px;
+    border-radius: 3%;
+
+}
+.people-list li  img {
+    float: left;
+
+
+
+    
+}
+.clearfix {
+    font-size: 10px;
+ 
+}
+/* 
+.form-control{
+    margin-left: 36px;
+    width: 667px;
+}
+.post-container{
+    margin-left: 36px;
+    width:100%%;
+} */
+/* .create{
+    width: 100%;
+
+} */

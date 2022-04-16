@@ -1,0 +1,53 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Social Media</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8 ">
+      <div class="box shadow-sm rounded bg-white mb-3">
+        <div class="box-title border-bottom p-3">
+          <h6 class="m-0">Recent</h6>
+        </div>
+        <div class="box-body p-0">
+          <div class="p-3 d-flex align-items-center bg-light border-bottom osahan-post-header " *ngFor="let notification of notifications" (click)="getNotify(notification.post_id,notification.from_user.id)" style="cursor: pointer;">
+            <div class="dropdown-list-image mr-3">
+              <img class="rounded-circle" 
+              src="{{storageURL}}/profiles/{{notification.from_user.profilePic}}" alt="" />
+            </div>
+            <div class="font-weight-bold mr-3 ms-3">
+              <div class="text-truncate">
+                <strong>{{notification.from_user.name}}: </strong>
+                <span>{{notification.type}}</span> 
+              </div>
+        
+              <div class="small text-secondary">
+                at: {{notification.created_at|dateAgo}}
+              </div>
+            </div>
+          </div>
+ 
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-2"></div>
+
+  </div>
+</div>
+</body>
+</html> 

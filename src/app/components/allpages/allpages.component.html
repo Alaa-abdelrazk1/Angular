@@ -1,0 +1,36 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 me-3 ms-3" *ngFor="let page of listPages;let i=index"  >
+      <div class="card card-one">
+        <div class="header">
+          <div class="avatar">
+            <img class="photo"
+              src="{{storageURL}}/{{'pages'}}/{{page.profile_image}}">
+          </div>
+        </div>
+        <a class="page-name" routerLink="/pages/{{page.id}}"><h3>{{page.page_name}}</h3></a>
+        <div class="desc">
+          {{page.pageslike.length}} Likes
+          <div *ngIf="!page.isLiked">Please follow us ! </div>
+          <div *ngIf="page.isLiked" style="color: #c72121;">Liked </div>
+        </div>
+        <!-- <div class="contacts">
+          <a href="#"><i class="fas fa-plus"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fas fa-envelope"></i></a>
+          <div class="clear"></div>
+        </div> -->
+        <!-- <div class="footer">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div> -->
+      </div>
+    </div>
+    
+    
+    
+  </div>
+</div>

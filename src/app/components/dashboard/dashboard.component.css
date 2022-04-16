@@ -1,0 +1,47 @@
+.container{
+    background-color: bisque;
+}
+
+.postdiv{
+    background-color: #f0f2f5;
+    padding: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #fff;
+    /* width:100%; */
+}
+
+.chat-element{
+    z-index: 1;
+    position: relative;
+}
+
+a { 
+    text-decoration: none;
+    /* margin-left: 36px; */
+ }
+
+
+
+
+@media (max-width:760px) {
+    .left{
+        display: none;
+    }
+    .right{
+        display: none;
+    }
+ 
+
+    
+}
+
+@media (min-width: 991px){
+ .left{
+ 
+    /* width: 160px; */
+ }
+
+}

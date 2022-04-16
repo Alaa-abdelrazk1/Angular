@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
+
+  <title>Document</title>
+</head>
+<body>
+  <div class="container ms-3"> 
+          <div class="row justify-content-center  ">
+              <div class="col-md-6 col-lg-4 mb-30">
+                  <div class="team-item">
+                      <div class="mb-30 position-relative d-flex align-items-center">
+                      
+                          <span class="img-holder d-inline-block ">
+                            <img class="w-100 img  " src="{{storageURL}}/profiles/{{user.profilePic}}" alt="">
+                          </span>
+                      </div>
+                      <div class="team-content">
+                          <p class="text-uppercase mb-0"  (click)="visitProfile()" style="cursor: pointer;"
+                          >{{user.name}}</p>
+                      </div>
+                  </div>
+        
+          </div>
+      </div>
+      </div>
+  
+</body>
+</html>

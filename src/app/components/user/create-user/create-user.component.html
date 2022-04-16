@@ -1,0 +1,153 @@
+<html>
+
+<head>
+  <title>Register To FireClub</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+</head>
+
+<body>
+  <html>
+
+  <head>
+    <title>Register To FireClub</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+  </head>
+
+  <body>
+    <div class="d-lg-flex half">
+      <div class="bg order-1 order-md-2 img" style="background-image: url('../../../../assets/images/register.jpg');">
+      </div>
+      <div class="contents order-2 order-md-1 ">
+
+        <div class="container">
+          <div class="row align-items-center justify-content-center mt-3">
+            <div class="col-md-7 shadow px-4  ">
+              <div class="hit-the-floor pt-3 pb-3">
+                <h1>FireClub</h1>
+              </div>
+              <div class="form" [formGroup]="formRegister">
+
+                <div class="form-field d-flex align-items-center mb-3"> <span class="far fa-user"></span>
+                  <input formControlName="firstname" id="firstname" type="text" aria-describedby="emailHelp"
+                    placeholder="Enter first name">
+                </div>
+                <div *ngIf="isInValidAndTouched('firstname')">
+                  <small class="form-text text-danger" *ngIf="isControlHasError('firstname','required')">*required
+                    firstname</small>
+                  <small class="form-text text-danger" *ngIf="isControlHasError('firstname','minlength')">*min
+                    length is 3</small>
+                  <small class="form-text text-danger" *ngIf="isControlHasError('firstname','maxlength')">*max
+                    length is 20</small>
+                </div>
+
+                <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span>
+                  <input formControlName="lastname" id="lastname" type="text" aria-describedby="emailHelp"
+                    placeholder="Enter last name">
+
+                </div>
+                <div *ngIf="isInValidAndTouched('lastname')">
+                  <small class="form-text text-danger" *ngIf="isControlHasError('lastname','required')">*required
+                    lastname</small>
+                  <small class="form-text text-danger" *ngIf="isControlHasError('lastname','minlength')">*min
+                    length is 3</small>
+                  <small class="form-text text-danger" *ngIf="isControlHasError('lastname','maxlength')">*max
+                    length is 20</small>
+                </div>
+
+
+                <div class="form-field d-flex align-items-center">
+                  <span class="far fa-at"></span>
+                  <input formControlName="email" id="email" type="email"
+                    [class.is-invalid]="isInValidAndTouched('email')" [class.is-valid]="isValidControl('email')"
+                    aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
+                <div *ngIf="isInValidAndTouched('email')">
+                  <small class="form-text text-danger" *ngIf="isControlHasError('email','required')">*required
+                    email</small>
+                  <small class="form-text text-danger" *ngIf="isControlHasError('email','pattern')">*you should
+                    add @ and .com</small>
+                </div>
+
+
+                <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span>
+
+                  <input formControlName="password" id="password" type="password" placeholder="password">
+                </div>
+                <div *ngIf="isInValidAndTouched('password')">
+                  <small class="form-text text-danger" *ngIf="isControlHasError('password','required')">*required
+                    password</small>
+                  <small class="form-text text-danger" *ngIf="isControlHasError('password','pattern')">*At least 8
+                    characters in length
+                    Lowercase letters
+                    Uppercase letters
+                    Numbers
+                    Special characters
+                  </small>
+
+
+                </div>
+                <div class="form-field d-flex align-items-center"> <i class="far fa-location-crosshairs"></i>
+
+                  <input formControlName="location" id="Location" type="text" aria-describedby="emailHelp"
+                    placeholder="Enter your location">
+                </div>
+                <div *ngIf="isInValidAndTouched('location')">
+                  <small class="form-text text-danger" *ngIf="isControlHasError('location','required')">*required
+                    Location</small>
+
+                </div>
+                <div class="form-field d-flex align-items-center"><i class="far fa-calendar"></i>
+                  <input formControlName="date_of_birth" id="date_of_birth" type="date" aria-describedby="emailHelp"
+                    placeholder="Enter date">
+                </div>
+                <div *ngIf="isInValidAndTouched('date_of_birth')">
+                  <small class="form-text text-danger" *ngIf="isControlHasError('date_of_birth','required')">*date
+                    required </small>
+
+
+                </div>
+
+                <div class="form-outline ">
+                  <input id="male" type="radio" name="gender" formControlName="gender" value="male" />
+                  <label class="custom-radio" for="male"></label>
+                  <span class="label-text">male</span>
+                </div>
+                <div class="form-outline ">
+                  <input id="female" type="radio" formControlName="gender" name="gender" value="female" />
+                  <label class="custom-radio" for="female"></label>
+                  <span class="label-text">female</span>
+                </div>
+
+                <div class="text-center pt-1 mb-5 pb-1">
+                  <button class="btn btn-block btn-primary pl-3 pr-3" [disabled]="formRegister.invalid"
+                    (click)="register()" type="button">Submit</button>
+
+                </div>
+
+                <div class="d-flex align-items-center justify-content-center pb-4">
+                  <p class="mb-0 me-2">Already exist ?</p>
+                  <a [routerLink]="['/login']">
+                    <button type="button" class="btn btn-outline-danger">login now</button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </body>
+
+  </html>
+
+</body>
+
+</html>

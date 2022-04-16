@@ -1,0 +1,161 @@
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photos</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div class="event-schedule-area-two bg-color pad100">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-title text-center">
+            <div class="title-text">
+              <h2 class="text-muted">Your Photos</h2>
+            </div>
+            <!-- <p>
+              photo of you and pictures you have been tagged in.
+            </p> -->
+          </div>
+        </div>
+        <!-- /.col end-->
+      </div>
+      <!-- row end-->
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="nav custom-tab" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" role="tab" aria-controls="profile" style="cursor: pointer;"
+                aria-selected="false" (click)="showProfilesTab()">Profiles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="contact-tab" data-toggle="tab" role="tab" aria-controls="contact" style="cursor: pointer;"
+                aria-selected="false" (click)="showCoversTab()">Covers</a>
+            </li>
+            <!-- <li class="nav-item d-none d-lg-block">
+              <a class="nav-link" id="sunday-tab" data-toggle="tab" href="#sunday" role="tab" aria-controls="sunday"
+                aria-selected="false">Tagged </a>
+            </li>
+            <li class="nav-item mr-0 d-none d-lg-block">
+              <a class="nav-link" id="monday-tab" data-toggle="tab" href="#monday" role="tab" aria-controls="monday"
+                aria-selected="false">Albums</a>
+            </li> -->
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade active show" id="home" role="tabpanel">
+              <div class="table-responsive">
+                <!-- profile picture table -->
+                <table class="table" *ngIf="profilesTab">
+                  <thead>
+                    <tr>
+                      <th scope="col">photo</th>
+                      <th scope="col">Time</th>
+                       <th scope="col">Delete</th>
+                      <th class="text-center" scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="inner-box" *ngFor="let profilepicture of profilepictures.reverse()">
+              
+                      <td>
+                        <div class="event-img">
+                          <img src="{{storageURL}}/profiles/{{profilepicture.profilePic}}" mat-raised-button
+                            (click)="expandPic(storageURL+'/profiles/'+profilepicture.profilePic)">
+                        </div>
+                      </td>
+                      <td>
+                        <div class="event-wrap">
+                          <div class="meta">
+                            <div class="time">
+                              <span>{{profilepicture.created_at | date:'medium'}}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    <td>
+                        <div class="v-no" (click)="deleteprofile(profilepicture.id,profilepicture.profilePic)" >
+                          <a class="btn " ><i class="fa-solid fa-trash-can me-2"></i>Delete</a>
+                        </div>
+                      </td> 
+                      <td>
+
+                        <!-- <div class="primary-btn">
+                          <a class="btn"><i class="fa-solid fa-trash-can me-2"></i>Delete</a>
+                        </div> -->
+                        <div class="primary-btn" (click)="setProfile(profilepicture.profilePic)">
+                          <a class="btn"><i class="fa-solid fa-gear me-2"></i>Set as Profile</a>
+                        </div>
+                      </td>
+
+
+                      
+                    </tr>
+
+                  </tbody>
+                </table>
+                <!-- cover pictures table -->
+                <table class="table" *ngIf="coversTab">
+                  <thead>
+                    <tr>
+                      <th scope="col">photo</th>
+                      <th scope="col">Time</th>
+                      <th scope="col">Delete</th>
+                      <th class="text-center" scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="inner-box" *ngFor="let coverpicture of coverpictures.reverse()">
+              
+                      <td>
+                        <div class="event-img">
+                          <img src="{{storageURL}}/covers/{{coverpicture.coverPic}}" mat-raised-button
+                            (click)="expandPic(storageURL+'/covers/'+coverpicture.coverPic)">
+                        </div>
+                      </td>
+                      <td>
+                        <div class="event-wrap">
+                          <div class="meta">
+                            <div class="time">
+                              <span>{{coverpicture.created_at | date:'medium'}}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+             
+                      <td>
+                        <div class="v-no"  (click)="deletecover(coverpicture.id,coverpicture.coverPic)">
+                          <a class="btn " ><i class="fa-solid fa-trash-can me-2"></i>Delete</a>
+                        </div>
+                      </td>
+                      <td>
+                
+                        <!-- <div class="primary-btn">
+                          <a class="btn"><i class="fa-solid fa-trash-can me-2"></i>Delete</a>
+                        </div> -->
+                        <div class="primary-btn" (click)="setCover(coverpicture.coverPic)">
+                          <a class="btn"><i class="fa-solid fa-gear me-2"></i>Set as Cover</a>
+                        </div>
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- <div class="primary-btn text-center m-3">
+              <a class="btn"> <i class="fa-solid fa-upload me-2"></i>Upload Photo</a>
+            </div> -->
+          </div>
+          <!-- /col end-->
+        </div>
+        <!-- /row end-->
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,77 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Social Media</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+  <div class="sources row chat-box mt-1 ">
+    <div id="plist" class="people-list col-md-3 col-sm-12 ">
+      <ul class="list-unstyled chat-list  mb-0">
+        <li class="clearfix" *ngFor="let chat of chats"
+          (click)="getChat(chat.chat_id,chat.to_user.name,chat.to_user. profilePic,chat.to_user_id)">
+          <img src="{{storageURL}}/profiles/{{chat.to_user.profilePic}}" alt="user image">
+          <div class="about">
+            <div class="name">{{chat.to_user.name}}</div>
+            <div class="status"> <i class="fa fa-circle online"></i> online </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="card chat-app">
+
+      <div class="chat" *ngIf="chatPressed">
+        <div class="chat-header clearfix">
+          <div class="row">
+            <div class="col-lg-6 ">
+              <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+                <img src="{{storageURL}}/profiles/{{middelRequiredData.chatUserPhoto}}" alt="avatar">
+              </a>
+              <div class="chat-about">
+                <h6 class="m-b-0">{{middelRequiredData.chatUserName}}</h6>
+                <small>Last seen: 2 hours ago</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chat-history">
+          <ul class="m-b-0">
+            <li class="clearfix" *ngFor="let message of messages">
+
+              <div class="message "
+                [ngClass]=" message.to_user_id==middelRequiredData.toUserId ? 'other-message' : 'my-message'">
+                {{message.content}}
+                <div>
+                  <small class="message-data-time h6 text-secondary">{{message.created_at|date:'medium'}}</small>
+                </div>
+              </div>
+
+            </li>
+          </ul>
+        </div>
+        <div class="chat-message clearfix">
+          <div class="input-group mb-0" [formGroup]="formMessage">
+            <div class="input-group-prepend" (click)="sendMessage()">
+              <span class="input-group-text"><i class="fa fa-send send "></i></span>
+            </div>
+            <input type="text" formControlName="message" class="form-control" placeholder="Enter text here...">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

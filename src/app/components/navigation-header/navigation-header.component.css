@@ -1,0 +1,178 @@
+.logout:hover{
+    cursor: pointer;
+}
+ 
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins',sans-serif;
+    box-sizing: border-box;
+}
+ul{
+    list-style: none;
+}
+ 
+.username-profilepic{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+
+
+ 
+/* .margin-nav{
+    width: 100%;
+    height: 30px;
+    margin-bottom: 30px;
+} */
+ 
+nav{
+    display: flex;
+    align-items: center;
+   justify-content:space-between;
+   width: 100%;
+    background-color: #212529;
+flex-wrap: nowrap;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    height: 50px;
+  
+}
+.logo{
+    text-decoration: none;
+    color: white;
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px #fff;
+ 
+      text-decoration: none;
+      padding-left: 20px;
+      font-size: 30px;
+      margin-right: 20pxpx;
+ 
+}
+.nav-left, .nav-right{
+    display: flex;
+    align-items: center;
+ 
+}
+ 
+.nav-left ul{
+    display: flex;
+    padding: 0;
+    justify-content: center;  
+}
+  ul li{
+    list-style: none;
+    display: inline-block;
+     -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    padding: 22px;
+    color: #f3eeee;
+}
+ ul li i {
+    font-size: 24px;
+    margin-left: 20px;
+}
+.nav-left ul:hover li {
+    filter: blur(0px);
+    -webkit-filter: blur(0px);
+}
+ 
+.nav-left ul:hover li:not(:hover) {
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+}
+ 
+.nav-left ul li:hover {
+    -webkit-transform: translateY(-0.3rem);
+    transform: translateY(-0.3rem);
+}
+ 
+.nav-left ul li i {
+    color: #f4f5fa;
+ 
+}
+ 
+.nav-user-icon img{
+    width: 40px;
+            height: 40px;
+            border-radius: 50%; 
+            
+            background-position: center center;
+            background-size: cover;
+    cursor: pointer;
+}
+.nav-user-icon {
+    margin-left: 20px;
+ 
+}
+
+
+ 
+ 
+ @media (max-width:650px){
+    
+    ul li {
+        padding: 6px;
+        padding-left: 15px;
+    }
+    ul li i {
+        font-size: 23px;
+        margin-left: 15px;
+    }
+  
+}
+@media (max-width: 570px){
+     ul li {
+       
+        padding: 5px;
+    }
+ ul li i {
+        font-size: 20px;
+        margin-left: 15px;
+    }
+    .nav-left {
+        
+       justify-content: space-around;
+        
+    }
+    .logo {
+       font-size: 20px;
+    }
+   .user-inf{
+       display: flex;
+   }
+ 
+}
+@media (max-width: 460px){
+    ul li {
+       
+        padding: 5px;
+    }
+     ul li i {
+        font-size: 14px;
+        margin-left: 5px;
+    }
+   
+    .logo {
+       font-size: 18px;
+       padding-left: 2px;
+    }
+   
+
+ 
+}
+@media (max-width:340px) {
+    .user-inf{
+        display: none !important;
+    }
+    
+}

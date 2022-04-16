@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>left-sidebar</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
+</head>
+ 
+<body>
+
+  <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start  " id="menu">
+   <li class="nav-item mb-3">
+    <a href="#" class="d-flex align-items-center text-white text-decoration-none " id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="{{storageURL}}/profiles/{{user.profilePic}}" (click)="visitProfile()" width="50" height="50" class="rounded-circle me-3" >
+      <span class="d-none d-sm-inline mx-1"> {{user.firstname}}</span>
+  </a>
+  </li> 
+    
+    
+    <li class="nav-item  ">
+          <a routerLink="/profile/friends" class="nav-link align-middle px-0 ">
+            <i class="fa-solid fa-user-group"></i> <span class="ms-1 d-none d-sm-inline  ">Friends</span>
+          </a>
+      </li>
+      <li class="nav-item">
+          <a routerLink="/allpages" class="nav-link align-middle px-0">
+            <i class="fa fa-flag"></i> <span class="ms-1 d-none d-sm-inline">Show All Pages</span>
+          </a>
+      </li>
+      <li class="nav-item">
+          <a routerLink="/createpage" class="nav-link align-middle px-0">
+            <i class="fa-solid fa-circle-plus"></i> <span class="ms-1 d-none d-sm-inline">Create New Page</span>
+          </a>
+      </li>
+      
+      <li class="nav-item">
+          <a routerLink="/profile/friends" class="nav-link align-middle px-0">
+            <i class="fab fa-facebook-messenger"></i> <span class="ms-1 d-none d-sm-inline">Inbox</span>
+          </a>
+      </li>
+
+     
+      <li>
+          <a routerLink="/savepost"  class="nav-link px-0 align-middle">
+            <i class="fa fa-bookmark"></i> <span class="ms-1 d-none d-sm-inline">Saved Posts</span></a>
+      </li>
+     
+          
+      <li>
+        <a routerLink="/profile/edit"  class="nav-link px-0 align-middle">
+          <i class="fa-solid fa-gear"></i> <span class="ms-1 d-none d-sm-inline">Setting</span></a>
+    </li>
+      
+    <li>
+      <a routerLink="/footer"  class="nav-link px-0 align-middle">
+        <i class="fa-solid fa-universal-access"></i><span class="ms-1 d-none d-sm-inline">About Us</span></a>
+  </li>
+     
+      
+  </ul>
+
+
+
+ 
+</body>
